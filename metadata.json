@@ -1,0 +1,6 @@
+{
+  "name": "Sentence Completion Quiz",
+  "description": "An elegant, prompt-response interactive quiz application with 33 core sentence completion questions, robust practicing capabilities, instant scoring, and detailed review metrics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
