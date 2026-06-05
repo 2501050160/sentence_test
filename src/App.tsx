@@ -1185,7 +1185,7 @@ export default function App() {
             Sentence Completion Quiz Companion © {new Date().getFullYear()}. Based on original English diagnostic exams.
           </p>
           <p className="text-indigo-300 font-semibold tracking-wide font-sans mt-2">
-            Developed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300 font-extrabold px-1 py-0.5 bg-white/10 rounded border border-white/10">Praveen</span>
+            Developed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300 font-extrabold px-1 py-0.5 bg-white/10 rounded border border-white/10">Praveen M-Tech CSE  2501050160@kluniversity.in    </span>
           </p>
           <p className="text-[10px] text-indigo-400/50 font-mono uppercase tracking-widest mt-1">
             Speed-optimized React Engine
