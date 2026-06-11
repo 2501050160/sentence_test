@@ -43,6 +43,7 @@ export default function App() {
 
   const [questionTimeLimit] = useState<number>(25);
 const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
+const [maxUnlockedQuestion, setMaxUnlockedQuestion] = useState(0);
 
 
 
@@ -145,6 +146,7 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
           if (idx < totalQ - 1) {
             // Auto-advance to the next question
             setCurrentQuestionIndex(idx + 1);
+            setMaxUnlockedQuestion(idx + 1);
           } else {
             // Out of questions, automatically submit the quiz
             submitQuizAnswers();
@@ -245,8 +247,12 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
     // In quiz mode, autoadvance to the next question if it is one-by-one focus view.
     if (quizMode === "quiz" && viewStyle === "focus" && currentQuestionIndex < QUESTION_BANK.length - 1) {
       setTimeout(() => {
-        setCurrentQuestionIndex((prev) => prev + 1);
-      }, 350);
+  setCurrentQuestionIndex((prev) => {
+    const next = prev + 1;
+    setMaxUnlockedQuestion(next);
+    return next;
+  });
+}, 350);
     }
   };
 
@@ -341,16 +347,26 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
 
   // Jump helper
   const handleJumpToQuestion = (id: number) => {
-    const index = QUESTION_BANK.findIndex((q) => q.id === id);
-    if (index !== -1) {
-      setCurrentQuestionIndex(index);
-      if (viewStyle === "list") {
-        setTimeout(() => {
-          questionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 100);
-      }
+  const index = QUESTION_BANK.findIndex((q) => q.id === id);
+
+  // Prevent going back to previous questions
+  if (index < currentQuestionIndex) {
+    return;
+  }
+
+  if (index !== -1) {
+    setCurrentQuestionIndex(index);
+
+    if (viewStyle === "list") {
+      setTimeout(() => {
+        questionRefs.current[id]?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 100);
     }
-  };
+  }
+};
 
   // Grade descriptor helper
   const getGradeDescriptor = (scorePercentage: number) => {
@@ -764,6 +780,7 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
                       return (
                         <button
                           key={q.id}
+                          disabled={idx < maxUnlockedQuestion}
                           onClick={() => handleJumpToQuestion(q.id)}
                           id={`nav-dot-${q.id}`}
                           className={`relative h-9 rounded-lg border flex items-center justify-center font-mono text-xs font-bold transition-all duration-150 cursor-pointer ${
@@ -926,15 +943,15 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
 
                     {/* Step Pagers */}
                     <div className="flex items-center justify-between" id="paginator-controls">
-                      <button
-                        onClick={() => setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))}
-                        disabled={currentQuestionIndex === 0}
-                        className="px-4 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white/90 text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5 transition-all disabled:opacity-30 disabled:hover:bg-white/5 cursor-pointer disabled:cursor-not-allowed"
-                        id="prev-pager-btn"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                        <span>Previous Question</span>
-                      </button>
+                     
+
+<button
+  disabled
+  className="px-4 py-2.5 bg-white/5 border border-white/10 text-white/40 text-xs font-bold rounded-xl cursor-not-allowed opacity-50"
+>
+  <ChevronLeft className="w-4 h-4" />
+  <span>Locked</span>
+</button>
 
                       <div className="text-xs text-indigo-300/80 font-mono select-none hidden sm:block">
                         Q.{currentQuestionIndex + 1} OF 33
@@ -957,6 +974,7 @@ const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
                     {QUESTION_BANK.map((q) => (
                       <div
                         key={q.id}
+
                         ref={(el) => {
                           questionRefs.current[q.id] = el;
                         }}
