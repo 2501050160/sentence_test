@@ -38,13 +38,11 @@ export default function App() {
   const [timer, setTimer] = useState<number>(0);
   const [timerIntervalId, setTimerIntervalId] = useState<number | null>(null);
 
-  // New Question Timer states - maximum of 45 seconds, default is 30 seconds
-  // const [questionTimeLimit, setQuestionTimeLimit] = useState<number>(30);
-  // const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(30);
 
 
-    const [questionTimeLimit] = useState<number>(25);
 
+  const [questionTimeLimit] = useState<number>(25);
+const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(25);
 
 
 
@@ -518,25 +516,7 @@ export default function App() {
                   </div>
 
                   {/* Mode B Column */}
-                  <div
-                    onClick={() => startQuiz("practice")}
-                    className="p-6 bg-white/5 backdrop-blur-2xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(139,92,246,0.15)] rounded-3xl cursor-pointer transition-all duration-300 group relative flex flex-col justify-between"
-                    id="select-mode-practice"
-                  >
-                    <div>
-                      <div className="w-12 h-12 rounded-xl bg-white/5 text-violet-300 flex items-center justify-center mb-4 group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-500/30 border border-white/5 transition-colors duration-300">
-                        <BookOpen id="mode-icon-practice" className="w-6 h-6" />
-                      </div>
-                      <h3 className="font-sans font-bold text-lg text-white mb-1">Self Practice Mode</h3>
-                      <p className="text-xs text-white/60 leading-relaxed mb-4">
-                        Great for fast learning with no pressure. Select questions dynamically, view correct/incorrect highlights instantly, and unlock the pedagogical explanation after choice selection.
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs text-violet-300 font-bold mt-2">
-                      <span>Start Practice</span>
-                      <ArrowRight id="arrow-mode-pract" className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
+                  
                 </div>
 
                 {/* Quick educational facts */}
