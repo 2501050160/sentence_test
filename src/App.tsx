@@ -39,9 +39,20 @@ export default function App() {
   const [timerIntervalId, setTimerIntervalId] = useState<number | null>(null);
 
   // New Question Timer states - maximum of 45 seconds, default is 30 seconds
-  const [questionTimeLimit, setQuestionTimeLimit] = useState<number>(30);
-  const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(30);
+  // const [questionTimeLimit, setQuestionTimeLimit] = useState<number>(30);
+  // const [questionTimeRemaining, setQuestionTimeRemaining] = useState<number>(30);
 
+
+    const [questionTimeLimit] = useState<number>(25);
+
+
+
+
+
+
+
+
+  
   // Sync state values to refs to avoid stale closures in interval callbacks
   const userAnswersRef = useRef(userAnswers);
   const timerRef = useRef(timer);
@@ -465,54 +476,21 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="font-sans font-bold text-sm text-white">Question Time Limit Setting</h3>
-                      <p className="text-[11px] text-white/50">Each question will automatically advance after these seconds (max 45 seconds)</p>
+                      <p className="text-[11px] text-white/50">Each question will automatically advance after these seconds (max 25 seconds)</p>
                     </div>
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/[0.03] border border-white/5 p-4 rounded-xl">
                     <div className="flex items-center gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setQuestionTimeLimit((prev) => Math.max(5, prev - 5))}
-                        className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-all text-xl font-bold cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed"
-                        disabled={questionTimeLimit <= 5}
-                        id="time-limit-minus-btn"
-                      >
-                        -
-                      </button>
                       <div className="w-24 text-center select-none">
                         <span className="text-3xl font-mono font-black text-indigo-300">{questionTimeLimit}</span>
                         <span className="text-xs text-white/60 ml-1">sec</span>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => setQuestionTimeLimit((prev) => Math.min(45, prev + 5))}
-                        className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-all text-xl font-bold cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed"
-                        disabled={questionTimeLimit >= 45}
-                        id="time-limit-plus-btn"
-                      >
-                        +
-                      </button>
+                      
                     </div>
 
                     {/* Quick Presets */}
-                    <div className="flex items-center gap-2">
-                      {[15, 30, 45].map((preset) => (
-                        <button
-                          key={preset}
-                          type="button"
-                          onClick={() => setQuestionTimeLimit(preset)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                            questionTimeLimit === preset
-                              ? "bg-indigo-600/80 text-white shadow-[0_0_10px_rgba(99,102,241,0.3)] border border-indigo-500/50"
-                              : "bg-white/5 text-white/60 border border-white/5 hover:bg-white/10"
-                          }`}
-                          id={`preset-btn-${preset}`}
-                        >
-                          {preset}s
-                        </button>
-                      ))}
-                    </div>
+                    
                   </div>
                 </div>
 
@@ -1185,7 +1163,7 @@ export default function App() {
             Sentence Completion Quiz Companion © {new Date().getFullYear()}. Based on original English diagnostic exams.
           </p>
           <p className="text-indigo-300 font-semibold tracking-wide font-sans mt-2">
-            Developed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300 font-extrabold px-1 py-0.5 bg-white/10 rounded border border-white/10">Praveen M-Tech CSE  2501050160@kluniversity.in    </span>
+            Developed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300 font-extrabold px-1 py-0.5 bg-white/10 rounded border border-white/10">Praveen</span>
           </p>
           <p className="text-[10px] text-indigo-400/50 font-mono uppercase tracking-widest mt-1">
             Speed-optimized React Engine
