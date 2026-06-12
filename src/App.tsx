@@ -471,9 +471,12 @@ const [maxUnlockedQuestion, setMaxUnlockedQuestion] = useState(0);
                     <Star id="star-badge" className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
                     <span>Comprehensive 33-Question Workbook</span>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-white tracking-tight leading-tight">
-                    This quiz was created by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400"> <br> </> Praveen (M-Tech CSE)  <br> </></span> All the best for TCS .
-                  </h2>
+                  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-white tracking-tight leading-tight"> 
+  This quiz was created by <br>
+  <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">Praveen (M-Tech CSE)</span> <br>
+  All the best for TCS. 
+</h2>
+
                   <p className="text-white/70 text-base leading-relaxed font-normal">
                     Develop your logical reasoning, contextual deduction, and grammar mechanics. Each question tests your ability to select the correct words or phrases (fillers) that finish a sentence in a coherent, grammatically precise, and meaningful fashion.
                   </p>
