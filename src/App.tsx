@@ -475,7 +475,7 @@ const [maxUnlockedQuestion, setMaxUnlockedQuestion] = useState(0);
 
 
 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-white tracking-tight leading-tight">
-                    This quiz was created by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400"> <br> </> Praveen (M-Tech CSE)  <br> </></span> All the best for TCS .
+                    This quiz was created by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">     Praveen (M-Tech CSE),  </span> </h2> <h2> </h2> All the best for TCS .
                   </h2>
 
 
